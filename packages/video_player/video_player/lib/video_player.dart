@@ -171,6 +171,7 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
       {this.package, this.closedCaptionFile})
       : dataSourceType = DataSourceType.asset,
         formatHint = null,
+        headers = null,
         super(VideoPlayerValue(duration: null));
 
   /// Constructs a [VideoPlayerController] playing a video from obtained from
@@ -180,8 +181,14 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// null.
   /// **Android only**: The [formatHint] option allows the caller to override
   /// the video format detection code.
+<<<<<<< HEAD:packages/video_player/video_player/lib/video_player.dart
   VideoPlayerController.network(this.dataSource,
       {this.formatHint, this.closedCaptionFile})
+=======
+  /// The [headers] option allows adding headers int to http request while playing.
+  VideoPlayerController.network(this.dataSource,
+      {this.formatHint, this.headers})
+>>>>>>> support http headers, both Android and iOS.:packages/video_player/lib/video_player.dart
       : dataSourceType = DataSourceType.network,
         package = null,
         super(VideoPlayerValue(duration: null));
@@ -195,6 +202,7 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
         dataSourceType = DataSourceType.file,
         package = null,
         formatHint = null,
+        headers = null,
         super(VideoPlayerValue(duration: null));
 
   int _textureId;
@@ -211,7 +219,13 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// is constructed with.
   final DataSourceType dataSourceType;
 
+<<<<<<< HEAD:packages/video_player/video_player/lib/video_player.dart
   /// Only set for [asset] videos. The package that the asset was loaded from.
+=======
+  /// Http headers while building [dataSource] from networks
+  final Map<String, String> headers;
+
+>>>>>>> support http headers, both Android and iOS.:packages/video_player/lib/video_player.dart
   final String package;
 
   /// Optional field to specify a file containing the closed
