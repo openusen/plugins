@@ -219,6 +219,7 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// is constructed with.
   final DataSourceType dataSourceType;
 
+<<<<<<< HEAD
 <<<<<<< HEAD:packages/video_player/video_player/lib/video_player.dart
   /// Only set for [asset] videos. The package that the asset was loaded from.
 =======
@@ -236,6 +237,14 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   final Future<ClosedCaptionFile> closedCaptionFile;
 
   ClosedCaptionFile _closedCaptionFile;
+=======
+  /// Http headers while building [dataSource] from networks
+  final Map<String, String> headers;
+
+  /// Only set for [asset] videos. The package that the asset was loaded from.
+  final String package;
+
+>>>>>>> resolve conflicts
   Timer _timer;
   bool _isDisposed = false;
   Completer<void> _creatingCompleter;
