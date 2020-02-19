@@ -181,14 +181,9 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// null.
   /// **Android only**: The [formatHint] option allows the caller to override
   /// the video format detection code.
-<<<<<<< HEAD:packages/video_player/video_player/lib/video_player.dart
-  VideoPlayerController.network(this.dataSource,
-      {this.formatHint, this.closedCaptionFile})
-=======
   /// The [headers] option allows adding headers int to http request while playing.
   VideoPlayerController.network(this.dataSource,
-      {this.formatHint, this.headers})
->>>>>>> support http headers, both Android and iOS.:packages/video_player/lib/video_player.dart
+      {this.formatHint, this.closedCaptionFile, this.headers})
       : dataSourceType = DataSourceType.network,
         package = null,
         super(VideoPlayerValue(duration: null));
@@ -219,14 +214,10 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   /// is constructed with.
   final DataSourceType dataSourceType;
 
-<<<<<<< HEAD
-<<<<<<< HEAD:packages/video_player/video_player/lib/video_player.dart
-  /// Only set for [asset] videos. The package that the asset was loaded from.
-=======
   /// Http headers while building [dataSource] from networks
   final Map<String, String> headers;
-
->>>>>>> support http headers, both Android and iOS.:packages/video_player/lib/video_player.dart
+  
+  /// Only set for [asset] videos. The package that the asset was loaded from.
   final String package;
 
   /// Optional field to specify a file containing the closed
@@ -237,14 +228,6 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
   final Future<ClosedCaptionFile> closedCaptionFile;
 
   ClosedCaptionFile _closedCaptionFile;
-=======
-  /// Http headers while building [dataSource] from networks
-  final Map<String, String> headers;
-
-  /// Only set for [asset] videos. The package that the asset was loaded from.
-  final String package;
-
->>>>>>> resolve conflicts
   Timer _timer;
   bool _isDisposed = false;
   Completer<void> _creatingCompleter;

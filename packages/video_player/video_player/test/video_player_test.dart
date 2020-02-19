@@ -50,7 +50,9 @@ class FakeController extends ValueNotifier<VideoPlayerValue>
   VideoFormat get formatHint => null;
 
   @override
-<<<<<<< HEAD
+  Map<String, String> get headers => null;
+  
+  @override
   Future<ClosedCaptionFile> get closedCaptionFile => _loadClosedCaption();
 }
 
@@ -73,9 +75,6 @@ class _FakeClosedCaptionFile extends ClosedCaptionFile {
       ),
     ];
   }
-=======
-  Map<String, String> get headers => null;
->>>>>>> resolve conflicts
 }
 
 void main() {

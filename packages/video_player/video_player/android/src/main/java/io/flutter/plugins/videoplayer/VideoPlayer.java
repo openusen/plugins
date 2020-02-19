@@ -63,7 +63,8 @@ final class VideoPlayer {
       TextureRegistry.SurfaceTextureEntry textureEntry,
       String dataSource,
       Result result,
-      String formatHint) {
+      String formatHint,
+      Map<String, String> headers) {
     this.eventChannel = eventChannel;
     this.textureEntry = textureEntry;
 
@@ -74,13 +75,17 @@ final class VideoPlayer {
 
     DataSource.Factory dataSourceFactory;
     if (isHTTP(uri)) {
-      dataSourceFactory =
+      DefaultHttpDataSourceFactory defaultHttpDataSourceFactory =
           new DefaultHttpDataSourceFactory(
               "ExoPlayer",
               null,
               DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
               DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
               true);
+        if (headers != null) {
+          defaultHttpDataSourceFactory.getDefaultRequestProperties().set(headers);
+        }
+        dataSourceFactory = defaultHttpDataSourceFactory;
     } else {
       dataSourceFactory = new DefaultDataSourceFactory(context, "ExoPlayer");
     }
