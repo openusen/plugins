@@ -41,7 +41,9 @@ int64_t FLTCMTimeToMillis(CMTime time) {
 @property(nonatomic, readonly) bool isPlaying;
 @property(nonatomic) bool isLooping;
 @property(nonatomic, readonly) bool isInitialized;
-- (instancetype)initWithURL:(NSURL*)url frameUpdater:(FLTFrameUpdater*)frameUpdater headers:(NSDictionary*)headers;
+- (instancetype)initWithURL:(NSURL*)url
+               frameUpdater:(FLTFrameUpdater*)frameUpdater
+                    headers:(NSDictionary*)headers;
 - (void)play;
 - (void)pause;
 - (void)setIsLooping:(bool)isLooping;
@@ -157,14 +159,16 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
   _displayLink.paused = YES;
 }
 
-- (instancetype)initWithURL:(NSURL*)url frameUpdater:(FLTFrameUpdater*)frameUpdater headers:(NSDictionary*)headers {
+- (instancetype)initWithURL:(NSURL*)url
+               frameUpdater:(FLTFrameUpdater*)frameUpdater
+                    headers:(NSDictionary*)headers {
   AVPlayerItem* item;
   if (headers == (id)[NSNull null] || headers == nil) {
     item = [AVPlayerItem playerItemWithURL:url];
   } else {
     AVURLAsset* asset = [AVURLAsset URLAssetWithURL:url
                                             options:@{@"AVURLAssetHTTPHeaderFieldsKey" : headers}];
-      item = [AVPlayerItem playerItemWithAsset:asset];
+    item = [AVPlayerItem playerItemWithAsset:asset];
   }
   return [self initWithPlayerItem:item frameUpdater:frameUpdater];
 }
@@ -487,7 +491,8 @@ static inline CGFloat radiansToDegrees(CGFloat radians) {
       [self onPlayerSetup:player frameUpdater:frameUpdater result:result];
     } else if (uriArg) {
       player = [[FLTVideoPlayer alloc] initWithURL:[NSURL URLWithString:uriArg]
-                                      frameUpdater:frameUpdater headers:argsMap[@"headers"]];
+                                      frameUpdater:frameUpdater
+                                           headers:argsMap[@"headers"]];
       [self onPlayerSetup:player frameUpdater:frameUpdater result:result];
     } else {
       result(FlutterMethodNotImplemented);
