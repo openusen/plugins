@@ -141,7 +141,11 @@ class DataSource {
     this.formatHint,
     this.asset,
     this.package,
+    this.headers,
   });
+
+  /// Http headers while building [dataSource] from networks
+  final Map<String, String> headers;
 
   /// The way in which the video was originally loaded.
   ///
