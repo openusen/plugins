@@ -10,8 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'package:video_player_platform_interface/video_player_platform_interface.dart';
-export 'package:video_player_platform_interface/video_player_platform_interface.dart'
+import 'package:video_player/src/video_player_platform_interface.dart';
+export 'package:video_player/src/video_player_platform_interface.dart'
     show DurationRange, DataSourceType, VideoFormat;
 
 import 'src/closed_caption_file.dart';
